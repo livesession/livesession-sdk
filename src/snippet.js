@@ -1,5 +1,11 @@
 import { SDK_VERSION } from "./api";
-const snippet = ({ wnd = window, doc = document, type = "script", cdn = "cdn.livesession.io/track.js" }) => {
+
+const snippet = (
+  wnd = window,
+  doc = document,
+  type = "script",
+  cdn = ("https:" === window.location.protocol ? "https://" : "http://") + "cdn.livesession.io/track.js"
+) => {
   return ((w, d, t, u) => {
     if (w.__ls) {
       throw new Error("LiveSession script already added");
@@ -13,7 +19,7 @@ const snippet = ({ wnd = window, doc = document, type = "script", cdn = "cdn.liv
 
     const ls = d.createElement(t);
     ls.async = true;
-    ls.src = "https://" + u;
+    ls.src = u;
     ls.charset = "utf-8";
     ls.crossOrigin = "anonymous";
     const h = d.getElementsByTagName("head")[0];

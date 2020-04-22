@@ -1,10 +1,15 @@
-import snippet from "./snippet";
-import api from "./api";
+import snippet from "./src/snippet";
+import api from "./src/api";
 
+declare global {
+  interface Window {
+    __ls: any;
+  }
+}
 const isLoaded = () => window.__ls;
 
-const safeCall = (name) => {
-  return (...args) => {
+const safeCall = (name: string) => {
+  return (...args: object[]) => {
     if (!isLoaded()) {
       throw Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
@@ -15,7 +20,7 @@ const safeCall = (name) => {
   };
 };
 
-const _init = (trackID, options) => {
+const _init = (trackID: string, options: object[]) => {
   if (isLoaded()) {
     console.warn("LiveSession already inited (skipping init() call)");
     return;
