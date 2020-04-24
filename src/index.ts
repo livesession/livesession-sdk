@@ -21,15 +21,18 @@ const safeCall = (name: string) => {
 };
 
 const _init = (trackID: string, options?: object) => {
-  if (isLoaded()) {
-    console.warn("LiveSession already inited (skipping init() call)");
-    return;
+  if (process.env.NODE_ENV === "production") {
+    if (isLoaded()) {
+      console.warn("LiveSession already inited (skipping init() call)");
+      return;
+    }
+    if (!trackID) {
+      throw new Error(`trackID is required`);
+    }
+    snippet();
+    return api.init(trackID, options);
   }
-  if (!trackID) {
-    throw new Error(`trackID is required`);
-  }
-  snippet();
-  return api.init(trackID, options);
+  return null;
 };
 
 export default {
