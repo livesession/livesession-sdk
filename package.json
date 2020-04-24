@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "types": ".src/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,9 @@
   },
   "homepage": "https://github.com/livesession/livesession-sdk#readme",
   "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
   "dependencies": {}

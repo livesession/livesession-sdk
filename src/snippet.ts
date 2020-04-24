@@ -10,14 +10,14 @@ const snippet = (
     if (w.__ls) {
       throw new Error("LiveSession script already added");
     }
-    const f = (w.__ls = function () {
+    const f: any = (w.__ls = function () {
       f.push ? f.push.apply(f, arguments) : f.store.push(arguments);
     });
     if (!w.__ls) w.__ls = f;
     f.store = [];
     f.v = SDK_VERSION;
 
-    const ls = d.createElement(t);
+    const ls = <HTMLScriptElement>d.createElement(t);
     ls.async = true;
     ls.src = u;
     ls.charset = "utf-8";

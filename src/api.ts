@@ -8,8 +8,8 @@ const apiCall = (name: string, ...args: (object | boolean | string | void)[]) =>
   return window.__ls(name, ...args);
 };
 
-const api = {
-  init: (trackID: string, options: object[]) => apiCall("init", trackID, options),
+const api: any = {
+  init: (trackID: string, options?: object) => apiCall("init", trackID, options),
   getSessionURL: (callback: void) => apiCall("getSessionURL", callback),
   identify: (data: object) => apiCall("identify", data),
   invalidateSession: () => apiCall("invalidateSession"),

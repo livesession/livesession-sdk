@@ -1,5 +1,5 @@
-import snippet from "./src/snippet";
-import api from "./src/api";
+import snippet from "./snippet";
+import api from "./api";
 
 declare global {
   interface Window {
@@ -11,22 +11,22 @@ const isLoaded = () => window.__ls;
 const safeCall = (name: string) => {
   return (...args: object[]) => {
     if (!isLoaded()) {
-      throw Error("LiveSession is not loaded. Call init() before calling other API functions");
+      throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
     if (!api[name]) {
-      throw Error(`method "${name}" doesn't exist`);
+      throw new Error(`method "${name}" doesn't exist`);
     }
     return api[name](...args);
   };
 };
 
-const _init = (trackID: string, options: object[]) => {
+const _init = (trackID: string, options?: object) => {
   if (isLoaded()) {
     console.warn("LiveSession already inited (skipping init() call)");
     return;
   }
   if (!trackID) {
-    throw Error(`trackID is required`);
+    throw new Error(`trackID is required`);
   }
   snippet();
   return api.init(trackID, options);
