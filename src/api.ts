@@ -4,11 +4,24 @@ declare global {
   }
 }
 
+interface apiConfig {
+  init?: Function;
+  getSessionURL?: Function;
+  identify?: Function;
+  invalidateSession?: Function;
+  newPageView?: Function;
+  setOptions?: Function;
+  setCustomParams?: Function;
+  off?: Function;
+  optOut?: Function;
+  debug?: Function;
+}
+
 const apiCall = (name: string, ...args: (object | boolean | string | void)[]) => {
   return window.__ls(name, ...args);
 };
 
-const api: any = {
+const api: apiConfig = {
   init: (trackID: string, options?: object) => apiCall("init", trackID, options),
   getSessionURL: (callback: void) => apiCall("getSessionURL", callback),
   identify: (data: object) => apiCall("identify", data),
