@@ -4,13 +4,13 @@ This small package let you install LiveSession script and configure it properly.
 
 If you need you can use methods that were also provided in this SDK.
 
-Important: **script by default is working only in production mode, but you can pass a third argument to init method to enable devMode**
+**Important:** script by default is working only in production mode, but you can pass a third argument to init method to enable devMode
 
 ## Usage
 
 `npm i livesession-sdk` or `yarn add livesession-sdk`
 
-Next, you should initialize the SDK in your page like in this example:
+Next, you should initialize the SDK nn your website like in this example:
 
 ```javascript
 import ls from "livesession-sdk";
@@ -40,18 +40,18 @@ For more about initializing script check out our [guide](https://developers.live
 
 If you initialized script, you can simply customize it with following functions:
 
-| Function          | Parameter                   | Default | Allowed                                               |
-| ----------------- | --------------------------- | ------- | ----------------------------------------------------- |
-| init              | trackID, options,devMode    | null    | string(required), object, boolean(by default = false) |
-| getSessionURL     | callback(url, isNewSession) | null    | void(string, bool)                                    |
-| identify          | data                        | null    | object                                                |
-| invalidateSession | -                           | null    | -                                                     |
-| newPageView       | options                     | null    | object                                                |
-| setOptions        | options                     | null    | object                                                |
-| setCustomParams   | data                        | null    | object                                                |
-| off               | -                           | null    | -                                                     |
-| optOut            | -                           | false   | -                                                     |
-| debug             | -                           | false   | -                                                     |
+| Function          | Parameter                   | Default         | Allowed                        |
+| ----------------- | --------------------------- | --------------- | ------------------------------ |
+| init              | trackID, options,devMode    | null,null,false | string(required), object, bool |
+| getSessionURL     | callback(url, isNewSession) | null            | void(string, bool)             |
+| identify          | data                        | null            | object                         |
+| invalidateSession | -                           | null            | -                              |
+| newPageView       | options                     | null            | object                         |
+| setOptions        | options                     | null            | object                         |
+| setCustomParams   | data                        | null            | object                         |
+| off               | -                           | null            | -                              |
+| optOut            | -                           | false           | -                              |
+| debug             | -                           | false           | -                              |
 
 If out want to learn more about all methods, go to our [developers page](https://developers.livesession.io/javascript-api/methods/)
 
@@ -61,7 +61,7 @@ We're always open to work with our community. Let us know if you have ideas for 
 
 ## Changelog
 
-This package currently support `v.1.1`, you can find more informations about API changelog [here](https://developers.livesession.io/getting-started/changelog/)
+This package currently support `v.1.1` of API, you can find more informations about API changelog [here](https://developers.livesession.io/getting-started/changelog/)
 
 ## License
 
