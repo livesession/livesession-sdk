@@ -1,10 +1,9 @@
-import livesession from "./index";
-import api from "./api";
+import ls from "./index";
 
 describe("calling functions", () => {
   test("Call any other function before init", () => {
     expect(() => {
-      livesession.setOptions({ rootHostname: "test" });
+      ls.setOptions({ rootHostname: "test" });
     }).toThrow();
   });
 });
@@ -21,16 +20,13 @@ describe("Adding script", () => {
     beforeEach(() => (console.warn = mockedWarn));
 
     it("should call init method", () => {
-      const initScript = jest.fn((trackID: string, options?: object) => {
-        livesession.init(trackID);
-        return api.init(trackID, options);
-      });
+      const initScript = jest.fn((trackID: string, options?: object) => ls.init(trackID));
       initScript("jkjfdsfds");
       expect(initScript).toBeCalledTimes(1);
       expect(consoleOutput).toEqual([]);
     });
     it("Render script more than once", () => {
-      livesession.init("test2");
+      ls.init("test2");
       expect(consoleOutput).toEqual([warning]);
     });
   });
