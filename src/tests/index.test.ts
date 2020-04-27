@@ -1,4 +1,4 @@
-import ls from "./index";
+import ls from "../index";
 
 describe("calling functions", () => {
   test("Call any other function before init", () => {
@@ -21,7 +21,7 @@ describe("Adding script", () => {
 
     it("should call init method", () => {
       const initScript = jest.fn((trackID: string, options?: object) => ls.init(trackID));
-      initScript("jkjfdsfds");
+      initScript("test");
       expect(initScript).toBeCalledTimes(1);
       expect(consoleOutput).toEqual([]);
     });

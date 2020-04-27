@@ -20,8 +20,8 @@ const safeCall = (name: string) => {
   };
 };
 
-const _init = (trackID: string, options?: object) => {
-  if (process.env.NODE_ENV === "production") {
+const _init = (trackID: string, options?: object, devMode: boolean = false) => {
+  if (process.env.NODE_ENV === "production" || devMode) {
     if (isLoaded()) {
       console.warn("LiveSession already inited (skipping init() call)");
       return;

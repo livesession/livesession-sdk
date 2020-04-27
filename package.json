@@ -2,7 +2,8 @@
   "name": "livesession-sdk",
   "version": "1.0.0",
   "description": "Add a LiveSession script to your site even easier with our SDK",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc --noImplicitUseStrict",
@@ -17,8 +18,8 @@
     "livesession sdk",
     "livesession plugin"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "LiveSession <hello@livesession.io>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/livesession/livesession-sdk/issues"
   },
