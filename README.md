@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/livesession/livesession-sdk/badge.svg?branch=master)](https://coveralls.io/github/livesession/livesession-sdk?branch=master)
+
 # Official LiveSession SDK
 
 This small package let you install LiveSession script and configure it properly.
