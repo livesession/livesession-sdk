@@ -13,16 +13,31 @@ If you need you can use methods that were also provided in this SDK.
 Next, you should initialize the SDK in your page like in this example:
 
 ```javascript
-import livesession from "livesession-sdk";
+import ls from "livesession-sdk";
 
 // init a script, trackID is required
-livesession.init("YOUR TRACKID", options);
+ls.init("YOUR TRACKID", options);
 ```
 
 **Initialization example**
 
 ```javascript
-livesession.init("123456789", { keystrokes: true, rootHostname: ".mypage.com });
+ls.init("123456789", { keystrokes: true, rootHostname: ".mypage.com });
+```
+
+## React usage
+
+Find your Layout component - it's important if you want to init your script on every page. We recommend to init script in componentDidMount(lifecycle method).
+
+```javascript
+// In your Layout component
+useEffect(() => {
+  ls.init("example");
+}, []);
+// or
+componentDidMount(){
+  ls.init("example");
+}
 ```
 
 For more about initializing script check out our [guide](https://developers.livesession.io/javascript-api/configuration/)
