@@ -6,6 +6,11 @@ declare global {
     __ls: any;
   }
 }
+
+interface sdkOptions {
+  devMode: boolean;
+}
+
 const isLoaded = () => window.__ls;
 
 const safeCall = (name: string) => {
@@ -20,8 +25,8 @@ const safeCall = (name: string) => {
   };
 };
 
-const _init = (trackID: string, options?: object, devMode: boolean = false) => {
-  if (process.env.NODE_ENV === "production" || devMode) {
+const _init = (trackID: string, options?: object, sdkOptions?: sdkOptions) => {
+  if (process.env.NODE_ENV === "production" || sdkOptions.devMode) {
     if (isLoaded()) {
       console.warn("LiveSession already inited (skipping init() call)");
       return;

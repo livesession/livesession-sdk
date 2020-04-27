@@ -1,4 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/github/livesession/livesession-sdk/badge.svg?branch=master)](https://coveralls.io/github/livesession/livesession-sdk?branch=master)
+[![Livesession SDK](https://circleci.com/gh/livesession/livesession-sdk.svg?style=svg)](https://circleci.com/gh/livesession/livesession-sdk/)
 
 # Official LiveSession SDK
 
@@ -10,7 +11,7 @@ If you need you can use methods that were also provided in this SDK.
 
 ## Usage
 
-`npm i livesession-sdk@1.0.0` or `yarn add livesession-sdk@1.0.0`
+`npm i livesession-sdk` or `yarn add livesession-sdk`
 
 Next, you should initialize the SDK nn your website like in this example:
 
@@ -18,21 +19,23 @@ Next, you should initialize the SDK nn your website like in this example:
 import ls from "livesession-sdk";
 
 // init a script, trackID is required
-ls.init("YOUR TRACKID", options, devMode);
+ls.init("YOUR TRACKID", options, sdkOptions);
 ```
 
 **Initialization example**
 
 ```javascript
 ls.init("123456789", { keystrokes: true, rootHostname: ".mypage.com });
-// or in devMode
-ls.init("123456789", null, true);
+// or with devMode on
+ls.init("1234.56789", { rootHostname: ".mypage.com }, {
+  devMode: true // process.env.NODE_ENV === "development"
+})
 ```
 
 ## React usage
 
 ```javascript
-ls.init("YOUR-TRACK-ID", options, devMode);
+ls.init("YOUR-TRACK-ID", options, sdkOptions);
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
@@ -42,18 +45,18 @@ For more about initializing script check out our [guide](https://developers.live
 
 If you initialized script, you can simply customize it with following functions:
 
-| Function          | Parameter                   | Default         | Allowed                        |
-| ----------------- | --------------------------- | --------------- | ------------------------------ |
-| init              | trackID, options,devMode    | null,null,false | string(required), object, bool |
-| getSessionURL     | callback(url, isNewSession) | null            | void(string, bool)             |
-| identify          | data                        | null            | object                         |
-| invalidateSession | -                           | null            | -                              |
-| newPageView       | options                     | null            | object                         |
-| setOptions        | options                     | null            | object                         |
-| setCustomParams   | data                        | null            | object                         |
-| off               | -                           | null            | -                              |
-| optOut            | -                           | false           | -                              |
-| debug             | -                           | false           | -                              |
+| Function          | Parameter                    | Default           | Allowed                          |
+| ----------------- | ---------------------------- | ----------------- | -------------------------------- |
+| init              | trackID, options, sdkOptions | null, null, false | string(required), object, object |
+| getSessionURL     | callback(url, isNewSession)  | null              | void(string, bool)               |
+| identify          | data                         | null              | object                           |
+| invalidateSession | -                            | null              | -                                |
+| newPageView       | options                      | null              | object                           |
+| setOptions        | options                      | null              | object                           |
+| setCustomParams   | data                         | null              | object                           |
+| off               | -                            | null              | -                                |
+| optOut            | -                            | false             | -                                |
+| debug             | -                            | false             | -                                |
 
 If out want to learn more about all methods, go to our [developers page](https://developers.livesession.io/javascript-api/methods/)
 
