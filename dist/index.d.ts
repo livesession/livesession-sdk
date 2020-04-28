@@ -3,11 +3,10 @@ declare global {
         __ls: any;
     }
 }
-interface sdkOptions {
-    devMode?: boolean;
-}
 declare const _default: {
-    init: (trackID: string, options?: object, sdkOptions?: sdkOptions) => any;
+    init: (trackID: string, options?: object, sdkOptions?: {
+        devMode: boolean;
+    }) => any;
     getSessionURL: (...args: object[]) => any;
     identify: (...args: object[]) => any;
     invalidateSession: (...args: object[]) => any;
