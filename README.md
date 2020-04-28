@@ -27,9 +27,13 @@ ls.init("YOUR TRACKID", options, sdkOptions);
 ```javascript
 ls.init("123456789", { keystrokes: true, rootHostname: ".mypage.com" });
 // or with devMode on
-ls.init("1234.56789", { rootHostname: ".mypage.com }, {
-  devMode: true // process.env.NODE_ENV === "development"
-})
+ls.init(
+  "1234.56789",
+  { rootHostname: ".mypage.com" },
+  {
+    devMode: true, // process.env.NODE_ENV === "development"
+  }
+);
 ```
 
 ## React usage
