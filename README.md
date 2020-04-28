@@ -7,8 +7,6 @@ This small package let you install LiveSession script and configure it properly.
 
 If you need you can use methods that were also provided in this SDK.
 
-**Important:** script by default is working only in production mode, but you can pass a third argument to init method to enable devMode
-
 ## Usage
 
 `npm i @livesession/livesession-sdk` or `yarn add @livesession/livesession-sdk`
