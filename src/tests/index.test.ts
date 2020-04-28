@@ -2,18 +2,6 @@ import ls from "../index";
 
 // all tests are running in production mode
 
-const methods = [
-  "getSessionURL",
-  "identify",
-  "invalidateSession",
-  "newPageView",
-  "setOptions",
-  "setCustomParams",
-  "off",
-  "optOut",
-  "debug",
-];
-
 beforeEach(() => {
   if (window.__ls) {
     delete window.__ls;
