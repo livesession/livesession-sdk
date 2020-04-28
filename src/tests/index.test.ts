@@ -1,5 +1,25 @@
 import ls from "../index";
 
+// all tests are running in production mode
+
+const methods = [
+  "getSessionURL",
+  "identify",
+  "invalidateSession",
+  "newPageView",
+  "setOptions",
+  "setCustomParams",
+  "off",
+  "optOut",
+  "debug",
+];
+
+beforeEach(() => {
+  if (window.__ls) {
+    delete window.__ls;
+  }
+});
+
 describe("calling functions", () => {
   test("Call any other function before init", () => {
     expect(() => {
@@ -26,8 +46,17 @@ describe("Adding script", () => {
       expect(consoleOutput).toEqual([]);
     });
     it("Render script more than once", () => {
+      ls.init("test1");
       ls.init("test2");
       expect(consoleOutput).toEqual([warning]);
     });
+  });
+});
+
+describe("devMode", () => {
+  it("should throw an error about disable devMode", () => {
+    expect(() => {
+      ls.init("testtest", null, { devMode: true });
+    }).toThrow();
   });
 });

@@ -4,7 +4,7 @@ declare global {
     }
 }
 interface sdkOptions {
-    devMode: boolean;
+    devMode?: boolean;
 }
 declare const _default: {
     init: (trackID: string, options?: object, sdkOptions?: sdkOptions) => any;
