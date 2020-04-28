@@ -7,9 +7,12 @@ declare global {
   }
 }
 
-interface sdkOptions {
-  devMode: boolean;
-}
+const sdkOptionsDefaults = {
+  devMode: false,
+};
+let opts = {
+  ...sdkOptionsDefaults,
+};
 
 const isLoaded = () => window.__ls;
 
@@ -21,23 +24,28 @@ const safeCall = (name: string) => {
     if (!api[name]) {
       throw new Error(`method "${name}" doesn't exist`);
     }
+    if (opts.devMode) {
+      return console.warn(`Skipping method: ${name}, devMode enabled`);
+    }
+
     return api[name](...args);
   };
 };
 
-const _init = (trackID: string, options?: object, sdkOptions?: sdkOptions) => {
-  if (process.env.NODE_ENV === "production" || sdkOptions.devMode) {
-    if (isLoaded()) {
-      console.warn("LiveSession already inited (skipping init() call)");
-      return;
-    }
-    if (!trackID) {
-      throw new Error(`trackID is required`);
-    }
-    snippet();
-    return api.init(trackID, options);
+const _init = (trackID: string, options?: object, sdkOptions = sdkOptionsDefaults) => {
+  opts = {
+    ...sdkOptionsDefaults,
+    ...sdkOptions,
+  };
+  if (isLoaded()) {
+    console.warn("LiveSession already inited (skipping init() call)");
+    return;
   }
-  return null;
+  if (!trackID) {
+    throw new Error(`trackID is required`);
+  }
+  snippet();
+  return api.init(trackID, options);
 };
 
 export default {

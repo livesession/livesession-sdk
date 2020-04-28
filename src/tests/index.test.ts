@@ -1,5 +1,13 @@
 import ls from "../index";
 
+// all tests are running in production mode
+
+beforeEach(() => {
+  if (window.__ls) {
+    delete window.__ls;
+  }
+});
+
 describe("calling functions", () => {
   test("Call any other function before init", () => {
     expect(() => {
@@ -26,6 +34,7 @@ describe("Adding script", () => {
       expect(consoleOutput).toEqual([]);
     });
     it("Render script more than once", () => {
+      ls.init("test1");
       ls.init("test2");
       expect(consoleOutput).toEqual([warning]);
     });

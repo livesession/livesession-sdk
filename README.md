@@ -41,6 +41,20 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 For more about initializing script check out our [guide](https://developers.livesession.io/javascript-api/configuration/)
 
+## sdkOptions
+
+As a third argument to init method you can pass sdkOptions object, here are all available variables:
+
+| Variable | Parameter | Default | Info                                              |
+| -------- | --------- | ------- | ------------------------------------------------- |
+| devMode  | bool      | false   | Log methods into console instead of calling their |
+
+**Example**
+
+```javascript
+ls.init("exampleID", null, { devMode: true });
+```
+
 ## API
 
 If you initialized script, you can simply customize it with following functions:
