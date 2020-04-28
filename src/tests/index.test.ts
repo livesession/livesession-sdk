@@ -40,11 +40,3 @@ describe("Adding script", () => {
     });
   });
 });
-
-describe("devMode", () => {
-  it("should throw an error about disable devMode", () => {
-    expect(() => {
-      ls.init("testtest", null, { devMode: true });
-    }).toThrow();
-  });
-});

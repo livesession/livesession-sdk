@@ -7,11 +7,10 @@ declare global {
   }
 }
 
-const prod = process.env.NODE_ENV === "production";
-
 const sdkOptionsDefaults = {
   devMode: false,
 };
+let opts = sdkOptionsDefaults;
 
 const isLoaded = () => window.__ls;
 
@@ -23,7 +22,7 @@ const safeCall = (name: string) => {
     if (!api[name]) {
       throw new Error(`method "${name}" doesn't exist`);
     }
-    if (sdkOptionsDefaults.devMode) {
+    if (opts.devMode) {
       return console.warn(`Skipping method: ${name}, devMode enabled`);
     }
 
@@ -32,12 +31,10 @@ const safeCall = (name: string) => {
 };
 
 const _init = (trackID: string, options?: object, sdkOptions = sdkOptionsDefaults) => {
-  if (sdkOptions.devMode) {
-    sdkOptionsDefaults.devMode = true;
-    if (prod) {
-      throw new Error("Disable devMode before running build script");
-    }
-  }
+  opts = {
+    ...sdkOptionsDefaults,
+    ...sdkOptions,
+  };
   if (isLoaded()) {
     console.warn("LiveSession already inited (skipping init() call)");
     return;
