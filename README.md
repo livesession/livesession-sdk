@@ -11,12 +11,12 @@ If you need you can use methods that were also provided in this SDK.
 
 ## Usage
 
-`npm i livesession-sdk` or `yarn add livesession-sdk`
+`npm i @livesession/livesession-sdk` or `yarn add @livesession/livesession-sdk`
 
 Next, you should initialize the SDK nn your website like in this example:
 
 ```javascript
-import ls from "livesession-sdk";
+import ls from "@livesession/livesession-sdk";
 
 // init a script, trackID is required
 ls.init("YOUR TRACKID", options, sdkOptions);
