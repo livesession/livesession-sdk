@@ -10,7 +10,9 @@ declare global {
 const sdkOptionsDefaults = {
   devMode: false,
 };
-let opts = sdkOptionsDefaults;
+let opts = {
+  ...sdkOptionsDefaults,
+};
 
 const isLoaded = () => window.__ls;
 
