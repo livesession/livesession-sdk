@@ -41,6 +41,25 @@ ls.init("YOUR-TRACK-ID", options, sdkOptions);
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
+## Angular usage
+
+1. Import SDK into your main app component
+
+2. Import `OnInit` from `@angular/core`
+
+3. Implement `OnInit` and call LiveSession init method in `ngOnInit` function
+
+```javascript
+// app.component.ts
+import ls from '@livesession-livesession-sdk'
+
+export class AppComponent implemets OnInit {
+    ngOnInit(){
+        ls.init("YOUR_TRACK_ID")
+    }
+}
+```
+
 For more about initializing script check out our [guide](https://developers.livesession.io/javascript-api/configuration/)
 
 ## sdkOptions
