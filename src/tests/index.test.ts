@@ -1,6 +1,4 @@
 import ls from "../index";
-import api from "../api";
-import snippet from "../snippet";
 
 // all tests are running in production mode
 

@@ -4,16 +4,21 @@ declare global {
   }
 }
 
-const apiCall = (name: string, ...args: (object | boolean | string | void)[]) => {
+const apiCall = (name: string, ...args: any) => {
   return window.__ls(name, ...args);
 };
 
-interface apiInt {
-  [k: string]: (...args: any) => void;
+interface ApiInt<T, S, M, N> {
+  [k: string]: T | S | M | N;
 }
 
-const api: apiInt = {
-  init: (trackID: string, options: object) => apiCall("init", trackID, options),
+const api: ApiInt<
+  () => void,
+  (options: object) => void,
+  (callback: void) => void,
+  (trackID: string, options?: object | null) => void
+> = {
+  init: (trackID: string, options?: object | null) => apiCall("init", trackID, options),
   getSessionURL: (callback: void) => apiCall("getSessionURL", callback),
   identify: (data: object) => apiCall("identify", data),
   invalidateSession: () => apiCall("invalidateSession"),

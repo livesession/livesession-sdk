@@ -17,7 +17,7 @@ let opts = {
 const isLoaded = () => window.__ls;
 
 const safeCall = (name: string) => {
-  return (...args: object[]) => {
+  return <T>(...args: object[]) => {
     if (!isLoaded()) {
       throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
@@ -51,7 +51,7 @@ const _init = (trackID: string, options?: object | null, sdkOptions = sdkOptions
 };
 
 interface apiFunctions {
-  [k: string]: any;
+  [k: string]: void;
 }
 
 const functions: apiFunctions = {
