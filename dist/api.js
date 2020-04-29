@@ -1,3 +1,4 @@
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const apiCall = (name, ...args) => {
     return window.__ls(name, ...args);

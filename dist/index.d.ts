@@ -4,17 +4,17 @@ declare global {
     }
 }
 declare const _default: {
-    init: (trackID: string, options?: object, sdkOptions?: {
+    init: (trackID: string, options?: object | null | undefined, sdkOptions?: {
         devMode: boolean;
-    }) => any;
-    getSessionURL: (...args: object[]) => any;
-    identify: (...args: object[]) => any;
-    invalidateSession: (...args: object[]) => any;
-    newPageView: (...args: object[]) => any;
-    setOptions: (...args: object[]) => any;
-    setCustomParams: (...args: object[]) => any;
-    off: (...args: object[]) => any;
-    optOut: (...args: object[]) => any;
-    debug: (...args: object[]) => any;
+    }) => void;
+    getSessionURL: (...args: object[]) => string | void;
+    identify: (...args: object[]) => string | void;
+    invalidateSession: (...args: object[]) => string | void;
+    newPageView: (...args: object[]) => string | void;
+    setOptions: (...args: object[]) => string | void;
+    setCustomParams: (...args: object[]) => string | void;
+    off: (...args: object[]) => string | void;
+    optOut: (...args: object[]) => string | void;
+    debug: (...args: object[]) => string | void;
 };
 export default _default;

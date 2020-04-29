@@ -6,7 +6,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "watch": "tsc -w",
-    "build": "tsc --noImplicitUseStrict",
+    "build": "tsc",
     "test": "NODE_ENV=production jest"
   },
   "repository": {
@@ -19,6 +19,13 @@
     "livesession plugin"
   ],
   "author": "LiveSession <hello@livesession.io>",
+  "contributors": [
+    {
+      "name": "Mateusz Gruźla",
+      "email": "m.gruzla@hotmail.com",
+      "url": "https://github.com/SkowyrnyMG"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/livesession/livesession-sdk/issues"

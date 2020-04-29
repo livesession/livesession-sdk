@@ -25,14 +25,16 @@ const safeCall = (name: string) => {
       throw new Error(`method "${name}" doesn't exist`);
     }
     if (opts.devMode) {
-      return console.warn(`Skipping method: ${name}, devMode enabled`);
+      const msg = `Skipping method: ${name}, devMode enabled`;
+      console.warn(msg);
+      return msg;
     }
 
     return api[name](...args);
   };
 };
 
-const _init = (trackID: string, options?: object, sdkOptions = sdkOptionsDefaults) => {
+const _init = (trackID: string, options?: object | null, sdkOptions = sdkOptionsDefaults) => {
   opts = {
     ...sdkOptionsDefaults,
     ...sdkOptions,
@@ -48,7 +50,11 @@ const _init = (trackID: string, options?: object, sdkOptions = sdkOptionsDefault
   return api.init(trackID, options);
 };
 
-export default {
+interface apiFunctions {
+  [k: string]: any;
+}
+
+const functions: apiFunctions = {
   init: _init,
   getSessionURL: safeCall("getSessionURL"),
   identify: safeCall("identify"),
@@ -60,3 +66,5 @@ export default {
   optOut: safeCall("optOut"),
   debug: safeCall("debug"),
 };
+
+export default functions;

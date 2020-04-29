@@ -1,6 +1,20 @@
 import ls from "../index";
+import api from "../api";
+import snippet from "../snippet";
 
 // all tests are running in production mode
+
+const methods = [
+  "getSessionURL",
+  "identify",
+  "invalidateSession",
+  "newPageView",
+  "setOptions",
+  "setCustomParams",
+  "off",
+  "optOut",
+  "debug",
+];
 
 beforeEach(() => {
   if (window.__ls) {
@@ -23,7 +37,7 @@ describe("Adding script", () => {
   afterEach(() => (console.warn = originalWarn));
 
   describe("Check adding script and console warn", () => {
-    let consoleOutput = [];
+    let consoleOutput: string[] = [];
     const mockedWarn = (output: string) => consoleOutput.push(output);
     beforeEach(() => (console.warn = mockedWarn));
 
@@ -38,5 +52,15 @@ describe("Adding script", () => {
       ls.init("test2");
       expect(consoleOutput).toEqual([warning]);
     });
+  });
+});
+
+describe("devMode", () => {
+  it("should log called method in console", () => {
+    ls.init("TRACK_ID", null, { devMode: true });
+    const returnValues = methods.map((method) => ls[method]());
+    expect(returnValues.map((val) => val)).toEqual(
+      methods.map((method) => `Skipping method: ${method}, devMode enabled`)
+    );
   });
 });

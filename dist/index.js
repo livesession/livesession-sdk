@@ -1,10 +1,11 @@
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const snippet_1 = require("./snippet");
 const api_1 = require("./api");
 const sdkOptionsDefaults = {
     devMode: false,
 };
-let opts = sdkOptionsDefaults;
+let opts = Object.assign({}, sdkOptionsDefaults);
 const isLoaded = () => window.__ls;
 const safeCall = (name) => {
     return (...args) => {
@@ -15,7 +16,9 @@ const safeCall = (name) => {
             throw new Error(`method "${name}" doesn't exist`);
         }
         if (opts.devMode) {
-            return console.warn(`Skipping method: ${name}, devMode enabled`);
+            const msg = `Skipping method: ${name}, devMode enabled`;
+            console.warn(msg);
+            return msg;
         }
         return api_1.default[name](...args);
     };

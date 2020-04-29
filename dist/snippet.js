@@ -1,3 +1,4 @@
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const api_1 = require("./api");
 const snippet = (wnd = window, doc = document, type = "script", cdn = ("https:" === window.location.protocol ? "https://" : "http://") + "cdn.livesession.io/track.js") => {
