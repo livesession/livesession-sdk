@@ -1,5 +1,5 @@
 {
-  "name": "@livesession/livesession-sdk",
+  "name": "@livesession/sdk",
   "version": "1.0.4",
   "description": "Add a LiveSession script to your site even easier with our SDK",
   "main": "./dist/index.js",

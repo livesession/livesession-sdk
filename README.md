@@ -9,12 +9,12 @@ If you need you can use methods that were also provided in this SDK.
 
 ## Usage
 
-`npm i @livesession/livesession-sdk` or `yarn add @livesession/livesession-sdk`
+`npm i @livesession/sdk` or `yarn add @livesession/sdk`
 
 Next, you should initialize the SDK nn your website like in this example:
 
 ```javascript
-import ls from "@livesession/livesession-sdk";
+import ls from "@livesession/sdk";
 
 // init a script, trackID is required
 ls.init("YOUR TRACKID", options, sdkOptions);
@@ -43,6 +43,8 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ## Angular usage
 
+Implementation is created thanks to [@SkowyrnyMG](https://github.com/SkowyrnyMG)
+
 1. Import SDK into your main app component
 
 2. Import `OnInit` from `@angular/core`
@@ -51,7 +53,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ```javascript
 // app.component.ts
-import ls from '@livesession-livesession-sdk'
+import ls from '@livesession/sdk'
 
 export class AppComponent implemets OnInit {
     ngOnInit(){
