@@ -1,4 +1,3 @@
-[![Coverage Status](https://coveralls.io/repos/github/livesession/livesession-sdk/badge.svg?branch=master)](https://coveralls.io/github/livesession/livesession-sdk?branch=master)
 [![Livesession SDK](https://circleci.com/gh/livesession/livesession-sdk.svg?style=svg)](https://circleci.com/gh/livesession/livesession-sdk/)
 
 # Official LiveSession SDK
