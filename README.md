@@ -19,7 +19,7 @@ import ls from "@livesession/sdk";
 ls.init("YOUR TRACKID", options, sdkOptions);
 ```
 
-After init, you probably want to start recording, so run next method - `ls.newPageView()`
+After LiveSession is inited, you can start recording session using method `newPageView()`
 
 **Initialization example with enabled recording**
 
