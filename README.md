@@ -11,7 +11,7 @@ If you need you can use methods that were also provided in this SDK.
 
 `npm i @livesession/sdk` or `yarn add @livesession/sdk`
 
-Next, you should initialize the SDK nn your website like in this example:
+Next, you should initialize the SDK on your website like in this example:
 
 ```javascript
 import ls from "@livesession/sdk";
@@ -20,10 +20,13 @@ import ls from "@livesession/sdk";
 ls.init("YOUR TRACKID", options, sdkOptions);
 ```
 
-**Initialization example**
+After init, you probably want to start recording, so run next method - `ls.newPageView()`
+
+**Initialization example with enabled recording**
 
 ```javascript
 ls.init("123456789", { keystrokes: true, rootHostname: ".mypage.com" });
+ls.newPageView();
 // or with devMode on
 ls.init(
   "1234.56789",
@@ -32,12 +35,14 @@ ls.init(
     devMode: true, // process.env.NODE_ENV === "development"
   }
 );
+ls.newPageView();
 ```
 
 ## React usage
 
 ```javascript
 ls.init("YOUR-TRACK-ID", options, sdkOptions);
+ls.newPageView();
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
@@ -49,7 +54,7 @@ Implementation is created thanks to [@SkowyrnyMG](https://github.com/SkowyrnyMG)
 
 2. Import `OnInit` from `@angular/core`
 
-3. Implement `OnInit` and call LiveSession init method in `ngOnInit` function
+3. Implement `OnInit` and call LiveSession init method in `ngOnInit` function, and start recording
 
 ```javascript
 // app.component.ts
@@ -57,7 +62,8 @@ import ls from '@livesession/sdk'
 
 export class AppComponent implemets OnInit {
     ngOnInit(){
-        ls.init("YOUR_TRACK_ID")
+        ls.init("YOUR_TRACK_ID");
+        ls.newPageView();
     }
 }
 ```
