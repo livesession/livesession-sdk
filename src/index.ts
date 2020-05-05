@@ -1,5 +1,6 @@
 import snippet from "./snippet";
 import api from "./api";
+import { apiConfig } from "./api";
 
 declare global {
   interface Window {
@@ -10,14 +11,15 @@ declare global {
 const sdkOptionsDefaults = {
   devMode: false,
 };
+
 let opts = {
   ...sdkOptionsDefaults,
 };
 
 const isLoaded = () => window.__ls;
 
-const safeCall = (name: string) => {
-  return (...args: object[]) => {
+const safeCall = <T>(name: keyof apiConfig) => {
+  return (...args: T[]) => {
     if (!isLoaded()) {
       throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
