@@ -8,16 +8,11 @@ const apiCall = (name: string, ...args: any) => {
   return window.__ls(name, ...args);
 };
 
-interface ApiInt<T, S, M, N> {
-  [k: string]: T | S | M | N;
+interface ApiInt {
+  [k: string]: any;
 }
 
-const api: ApiInt<
-  () => void,
-  (options: object) => void,
-  (callback: void) => void,
-  (trackID: string, options?: object | null) => void
-> = {
+const api: ApiInt = {
   init: (trackID: string, options?: object | null) => apiCall("init", trackID, options),
   getSessionURL: (callback: void) => apiCall("getSessionURL", callback),
   identify: (data: object) => apiCall("identify", data),

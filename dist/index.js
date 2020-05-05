@@ -35,7 +35,7 @@ const _init = (trackID, options, sdkOptions = sdkOptionsDefaults) => {
     snippet_1.default();
     return api_1.default.init(trackID, options);
 };
-exports.default = {
+const functions = {
     init: _init,
     getSessionURL: safeCall("getSessionURL"),
     identify: safeCall("identify"),
@@ -47,4 +47,4 @@ exports.default = {
     optOut: safeCall("optOut"),
     debug: safeCall("debug"),
 };
-//# sourceMappingURL=index.js.map
+exports.default = functions;

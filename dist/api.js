@@ -17,4 +17,3 @@ const api = {
 };
 exports.SDK_VERSION = "1.1.0";
 exports.default = api;
-//# sourceMappingURL=api.js.map

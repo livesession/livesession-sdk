@@ -4,12 +4,7 @@
     "module": "commonjs",
     "outDir": "dist",
     "declaration": true,
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "strictBindCallApply": true
+    "strict": true
   },
   "include": ["./src/**/*", "src/index.ts", "src/index.d.ts"],
   "exclude": ["node_modules", "**/*.test.ts"]

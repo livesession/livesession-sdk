@@ -3,9 +3,9 @@ declare global {
         __ls: any;
     }
 }
-interface apiInt {
-    [k: string]: (...args: any) => void;
+interface ApiInt {
+    [k: string]: any;
 }
-declare const api: apiInt;
+declare const api: ApiInt;
 export declare const SDK_VERSION = "1.1.0";
 export default api;

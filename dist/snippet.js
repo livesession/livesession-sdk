@@ -23,4 +23,3 @@ const snippet = (wnd = window, doc = document, type = "script", cdn = ("https:" 
     })(wnd, doc, type, cdn);
 };
 exports.default = snippet;
-//# sourceMappingURL=snippet.js.map
