@@ -3,7 +3,7 @@ const apiCall = (name: string, ...args: any) => {
 };
 
 export interface apiConfig {
-  init: (trackID: string, options?: object) => void;
+  init: (trackID: string, options?: object | null) => void;
   getSessionURL: (callback?: void) => void;
   identify: (data?: object) => void;
   invalidateSession: () => void;
@@ -16,7 +16,7 @@ export interface apiConfig {
 }
 
 const api: apiConfig = {
-  init: (trackID: string, options?: object) => apiCall("init", trackID, options),
+  init: (trackID: string, options?: object | null) => apiCall("init", trackID, options),
   getSessionURL: (callback?: void) => apiCall("getSessionURL", callback),
   identify: (data?: object) => apiCall("identify", data),
   invalidateSession: () => apiCall("invalidateSession"),

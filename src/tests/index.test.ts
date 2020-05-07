@@ -2,7 +2,7 @@ import ls from "../index";
 
 // all tests are running in production mode
 
-const methods = [
+const methods: string[] = [
   "getSessionURL",
   "identify",
   "invalidateSession",

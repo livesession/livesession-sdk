@@ -1,5 +1,5 @@
 export interface apiConfig {
-    init: (trackID: string, options?: object | null) => void;
+    init: (trackID: string, options?: object) => void;
     getSessionURL: (callback?: void) => void;
     identify: (data?: object) => void;
     invalidateSession: () => void;

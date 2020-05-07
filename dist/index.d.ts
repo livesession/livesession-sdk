@@ -4,7 +4,7 @@ declare global {
     }
 }
 declare const _default: {
-    init: (trackID: string, options?: object | null | undefined, sdkOptions?: {
+    init: (trackID: string, options?: object | undefined, sdkOptions?: {
         devMode: boolean;
     }) => void;
     getSessionURL: (args?: void | object | undefined) => any;

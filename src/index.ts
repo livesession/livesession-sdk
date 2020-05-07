@@ -37,7 +37,7 @@ const safeCall = (name: keyof Names) => {
   };
 };
 
-const _init = (trackID: string, options?: object, sdkOptions = sdkOptionsDefaults) => {
+const _init = (trackID: string, options?: object | null, sdkOptions = sdkOptionsDefaults) => {
   opts = {
     ...sdkOptionsDefaults,
     ...sdkOptions,
