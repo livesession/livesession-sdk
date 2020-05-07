@@ -8,6 +8,8 @@ declare global {
   }
 }
 
+type Names = Omit<apiConfig, "init">;
+
 const sdkOptionsDefaults = {
   devMode: false,
 };
@@ -17,20 +19,6 @@ let opts = {
 };
 
 const isLoaded = () => window.__ls;
-
-type Names = Omit<apiConfig, "init">;
-
-type Arguments = {
-  getSessionURL: void;
-  identify: object;
-  invalidateSession: null;
-  newPageView: object;
-  setOptions: object;
-  setCustomParams: object;
-  off: null;
-  optOut: null;
-  debug: null;
-};
 
 const safeCall = (name: keyof Names) => {
   return (args?: object | void) => {
@@ -49,7 +37,7 @@ const safeCall = (name: keyof Names) => {
   };
 };
 
-const _init = (trackID: string, options?: object | null, sdkOptions = sdkOptionsDefaults) => {
+const _init = (trackID: string, options?: object, sdkOptions = sdkOptionsDefaults) => {
   opts = {
     ...sdkOptionsDefaults,
     ...sdkOptions,
