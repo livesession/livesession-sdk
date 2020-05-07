@@ -18,8 +18,22 @@ let opts = {
 
 const isLoaded = () => window.__ls;
 
-const safeCall = <T>(name: keyof apiConfig) => {
-  return (...args: T[]) => {
+type Names = Omit<apiConfig, "init">;
+
+type Arguments = {
+  getSessionURL: void;
+  identify: object;
+  invalidateSession: null;
+  newPageView: object;
+  setOptions: object;
+  setCustomParams: object;
+  off: null;
+  optOut: null;
+  debug: null;
+};
+
+const safeCall = (name: keyof Names) => {
+  return (args?: object | void) => {
     if (!isLoaded()) {
       throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
@@ -31,8 +45,7 @@ const safeCall = <T>(name: keyof apiConfig) => {
       console.warn(msg);
       return msg;
     }
-
-    return api[name](...args);
+    return (api[name] as any)(args);
   };
 };
 
@@ -52,11 +65,7 @@ const _init = (trackID: string, options?: object | null, sdkOptions = sdkOptions
   return api.init(trackID, options);
 };
 
-interface apiFunctions {
-  [k: string]: any;
-}
-
-const functions: apiFunctions = {
+export default {
   init: _init,
   getSessionURL: safeCall("getSessionURL"),
   identify: safeCall("identify"),
@@ -68,5 +77,3 @@ const functions: apiFunctions = {
   optOut: safeCall("optOut"),
   debug: safeCall("debug"),
 };
-
-export default functions;

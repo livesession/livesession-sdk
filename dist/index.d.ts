@@ -3,8 +3,18 @@ declare global {
         __ls: any;
     }
 }
-interface apiFunctions {
-    [k: string]: any;
-}
-declare const functions: apiFunctions;
-export default functions;
+declare const _default: {
+    init: (trackID: string, options?: object | null | undefined, sdkOptions?: {
+        devMode: boolean;
+    }) => void;
+    getSessionURL: (args?: void | object | undefined) => any;
+    identify: (args?: void | object | undefined) => any;
+    invalidateSession: (args?: void | object | undefined) => any;
+    newPageView: (args?: void | object | undefined) => any;
+    setOptions: (args?: void | object | undefined) => any;
+    setCustomParams: (args?: void | object | undefined) => any;
+    off: (args?: void | object | undefined) => any;
+    optOut: (args?: void | object | undefined) => any;
+    debug: (args?: void | object | undefined) => any;
+};
+export default _default;

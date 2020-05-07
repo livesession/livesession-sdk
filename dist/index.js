@@ -8,7 +8,7 @@ const sdkOptionsDefaults = {
 let opts = Object.assign({}, sdkOptionsDefaults);
 const isLoaded = () => window.__ls;
 const safeCall = (name) => {
-    return (...args) => {
+    return (args) => {
         if (!isLoaded()) {
             throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
         }
@@ -20,7 +20,7 @@ const safeCall = (name) => {
             console.warn(msg);
             return msg;
         }
-        return api_1.default[name](...args);
+        return api_1.default[name](args);
     };
 };
 const _init = (trackID, options, sdkOptions = sdkOptionsDefaults) => {
@@ -35,7 +35,7 @@ const _init = (trackID, options, sdkOptions = sdkOptionsDefaults) => {
     snippet_1.default();
     return api_1.default.init(trackID, options);
 };
-const functions = {
+exports.default = {
     init: _init,
     getSessionURL: safeCall("getSessionURL"),
     identify: safeCall("identify"),
@@ -47,4 +47,3 @@ const functions = {
     optOut: safeCall("optOut"),
     debug: safeCall("debug"),
 };
-exports.default = functions;
