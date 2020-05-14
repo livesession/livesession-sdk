@@ -8,6 +8,18 @@ declare global {
   }
 }
 
+interface safeCallArgs {
+  getSessionURL: void;
+  identify: object;
+  invalidateSession: null;
+  newPageView: object;
+  setOptions: object;
+  setCustomParams: object;
+  off: null;
+  optOut: null;
+  debug: null;
+}
+
 type Names = Omit<apiConfig, "init">;
 
 const sdkOptionsDefaults = {
@@ -20,8 +32,8 @@ let opts = {
 
 const isLoaded = () => window.__ls;
 
-const safeCall = (name: keyof Names) => {
-  return (args?: object | void) => {
+const safeCall = <T extends keyof Names>(name: T) => {
+  return (args?: safeCallArgs[T]) => {
     if (!isLoaded()) {
       throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
