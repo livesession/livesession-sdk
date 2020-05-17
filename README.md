@@ -1,4 +1,3 @@
-[![Coverage Status](https://coveralls.io/repos/github/livesession/livesession-sdk/badge.svg?branch=master)](https://coveralls.io/github/livesession/livesession-sdk?branch=master)
 [![Livesession SDK](https://circleci.com/gh/livesession/livesession-sdk.svg?style=svg)](https://circleci.com/gh/livesession/livesession-sdk/)
 
 # Official LiveSession SDK
@@ -9,21 +8,24 @@ If you need you can use methods that were also provided in this SDK.
 
 ## Usage
 
-`npm i @livesession/livesession-sdk` or `yarn add @livesession/livesession-sdk`
+`npm i @livesession/sdk` or `yarn add @livesession/sdk`
 
-Next, you should initialize the SDK nn your website like in this example:
+Next, you should initialize the SDK on your website like in this example:
 
 ```javascript
-import ls from "@livesession/livesession-sdk";
+import ls from "@livesession/sdk";
 
 // init a script, trackID is required
 ls.init("YOUR TRACKID", options, sdkOptions);
 ```
 
-**Initialization example**
+After LiveSession is inited, you can start recording session using method `newPageView()`
+
+**Initialization example with enabled recording**
 
 ```javascript
 ls.init("123456789", { keystrokes: true, rootHostname: ".mypage.com" });
+ls.newPageView();
 // or with devMode on
 ls.init(
   "1234.56789",
@@ -32,13 +34,37 @@ ls.init(
     devMode: true, // process.env.NODE_ENV === "development"
   }
 );
+ls.newPageView();
 ```
 
 ## React usage
 
 ```javascript
 ls.init("YOUR-TRACK-ID", options, sdkOptions);
+ls.newPageView();
 ReactDOM.render(<App />, document.getElementById("root"));
+```
+
+## Angular usage
+
+Implementation is created thanks to [@SkowyrnyMG](https://github.com/SkowyrnyMG)
+
+1. Import SDK into your main app component
+
+2. Import `OnInit` from `@angular/core`
+
+3. Implement `OnInit` and call LiveSession init method in `ngOnInit` function, and start recording
+
+```javascript
+// app.component.ts
+import ls from '@livesession/sdk'
+
+export class AppComponent implemets OnInit {
+    ngOnInit(){
+        ls.init("YOUR_TRACK_ID");
+        ls.newPageView();
+    }
+}
 ```
 
 For more about initializing script check out our [guide](https://developers.livesession.io/javascript-api/configuration/)
