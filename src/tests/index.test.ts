@@ -57,7 +57,7 @@ describe("devMode", () => {
   it("should log called method in console", () => {
     ls.init("TRACK_ID", null, { devMode: true });
     // @ts-ignore: Unreachable code error
-    const returnValues = methods.map((method) => (ls[method] as any)());
+    const returnValues = methods.map((method) => ls[method]());
     expect(returnValues.map((val) => val)).toEqual(
       methods.map((method) => `Skipping method: ${method}, devMode enabled`)
     );
