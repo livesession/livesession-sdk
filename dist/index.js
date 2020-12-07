@@ -7,20 +7,35 @@ const sdkOptionsDefaults = {
 };
 let opts = Object.assign({}, sdkOptionsDefaults);
 const isLoaded = () => window.__ls;
+function getApiMethod(name) {
+    if (!isLoaded()) {
+        throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
+    }
+    const objectAPI = api_1.default;
+    if (!objectAPI.hasOwnProperty(name)) {
+        throw new Error(`method "${name}" doesn't exist`);
+    }
+    if (opts.devMode) {
+        const msg = `Skipping method: ${name}, devMode enabled`;
+        console.warn(msg);
+        return;
+    }
+    return objectAPI[name];
+}
 const safeCall = (name) => {
     return (args) => {
-        if (!isLoaded()) {
-            throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
+        const apiMethod = getApiMethod(name);
+        if (apiMethod) {
+            return apiMethod(args);
         }
-        if (!api_1.default[name]) {
-            throw new Error(`method "${name}" doesn't exist`);
+    };
+};
+const safeCallManyArgs = (name) => {
+    return (...args) => {
+        const apiMethod = getApiMethod(name);
+        if (apiMethod) {
+            return apiMethod(...args);
         }
-        if (opts.devMode) {
-            const msg = `Skipping method: ${name}, devMode enabled`;
-            console.warn(msg);
-            return msg;
-        }
-        return api_1.default[name](args);
     };
 };
 const _init = (trackID, options, sdkOptions = sdkOptionsDefaults) => {
@@ -46,4 +61,7 @@ exports.default = {
     off: safeCall("off"),
     optOut: safeCall("optOut"),
     debug: safeCall("debug"),
+    track: function (eventName, properties) {
+        safeCallManyArgs("track")(eventName, properties);
+    },
 };

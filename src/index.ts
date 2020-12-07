@@ -20,7 +20,11 @@ interface safeCallArgs {
   debug: null;
 }
 
-type Names = Omit<apiConfig, "init">;
+interface safeCallArgsManyArgs {
+  track: string
+}
+
+type Names = Omit< Omit<apiConfig, "init">, "track">;
 
 const sdkOptionsDefaults = {
   devMode: false,
@@ -32,20 +36,43 @@ let opts = {
 
 const isLoaded = () => window.__ls;
 
+function getApiMethod(name: string) {
+  if (!isLoaded()) {
+    throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
+  }
+
+  const objectAPI = <Object>api
+
+  if (!objectAPI.hasOwnProperty(name)) {
+    throw new Error(`method "${name}" doesn't exist`);
+  }
+
+  if (opts.devMode) {
+    const msg = `Skipping method: ${name}, devMode enabled`;
+    console.warn(msg);
+    return
+  }
+
+  return (objectAPI as any)[name]
+}
+
 const safeCall = <T extends keyof Names>(name: T) => {
-  return (args?: safeCallArgs[T]) => {
-    if (!isLoaded()) {
-      throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
+  return (args: safeCallArgs[T]) => {
+    const apiMethod = getApiMethod(name)
+
+    if (apiMethod) {
+      return apiMethod(args);
     }
-    if (!api[name]) {
-      throw new Error(`method "${name}" doesn't exist`);
+  };
+};
+
+const safeCallManyArgs = <T extends keyof safeCallArgsManyArgs>(name: T) => {
+  return (...args: any[]) => {
+    const apiMethod = getApiMethod(name)
+
+    if (apiMethod) {
+      return apiMethod(...args);
     }
-    if (opts.devMode) {
-      const msg = `Skipping method: ${name}, devMode enabled`;
-      console.warn(msg);
-      return msg;
-    }
-    return (api[name] as any)(args);
   };
 };
 
@@ -76,4 +103,7 @@ export default {
   off: safeCall("off"),
   optOut: safeCall("optOut"),
   debug: safeCall("debug"),
+  track: function(eventName: string, properties?: object) {
+    safeCallManyArgs("track")(eventName, properties)
+  },
 };

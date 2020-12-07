@@ -14,6 +14,7 @@ const api = {
     off: () => apiCall("off"),
     optOut: () => apiCall("optOut", true),
     debug: () => apiCall("debug", true),
+    track: (eventName, properties) => apiCall("track", eventName, properties)
 };
 exports.SDK_VERSION = "1.1.0";
 exports.default = api;

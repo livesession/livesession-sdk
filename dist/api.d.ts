@@ -9,6 +9,7 @@ export interface apiConfig {
     off: () => void;
     optOut: () => void;
     debug: () => void;
+    track: (eventName: string, properties?: object) => void;
 }
 declare const api: apiConfig;
 export declare const SDK_VERSION = "1.1.0";

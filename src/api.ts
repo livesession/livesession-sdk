@@ -13,6 +13,7 @@ export interface apiConfig {
   off: () => void;
   optOut: () => void;
   debug: () => void;
+  track: (eventName: string, properties?: object) => void;
 }
 
 const api: apiConfig = {
@@ -26,6 +27,7 @@ const api: apiConfig = {
   off: () => apiCall("off"),
   optOut: () => apiCall("optOut", true),
   debug: () => apiCall("debug", true),
+  track: (eventName: string, properties?: object) => apiCall("track", eventName, properties)
 };
 
 export const SDK_VERSION = "1.1.0";
