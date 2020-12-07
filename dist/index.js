@@ -18,7 +18,7 @@ function getApiMethod(name) {
     if (opts.devMode) {
         const msg = `Skipping method: ${name}, devMode enabled`;
         console.warn(msg);
-        return;
+        return () => msg;
     }
     return objectAPI[name];
 }

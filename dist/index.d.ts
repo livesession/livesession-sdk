@@ -7,15 +7,15 @@ declare const _default: {
     init: (trackID: string, options?: object | null | undefined, sdkOptions?: {
         devMode: boolean;
     }) => void;
-    getSessionURL: (args: void) => any;
-    identify: (args: object) => any;
-    invalidateSession: (args: null) => any;
-    newPageView: (args: object) => any;
-    setOptions: (args: object) => any;
-    setCustomParams: (args: object) => any;
-    off: (args: null) => any;
-    optOut: (args: null) => any;
-    debug: (args: null) => any;
+    getSessionURL: (args?: void | undefined) => any;
+    identify: (args?: object | undefined) => any;
+    invalidateSession: (args?: null | undefined) => any;
+    newPageView: (args?: object | undefined) => any;
+    setOptions: (args?: object | undefined) => any;
+    setCustomParams: (args?: object | undefined) => any;
+    off: (args?: null | undefined) => any;
+    optOut: (args?: null | undefined) => any;
+    debug: (args?: null | undefined) => any;
     track: (eventName: string, properties?: object | undefined) => void;
 };
 export default _default;

@@ -50,14 +50,14 @@ function getApiMethod(name: string) {
   if (opts.devMode) {
     const msg = `Skipping method: ${name}, devMode enabled`;
     console.warn(msg);
-    return
+    return () => msg
   }
 
   return (objectAPI as any)[name]
 }
 
 const safeCall = <T extends keyof Names>(name: T) => {
-  return (args: safeCallArgs[T]) => {
+  return (args?: safeCallArgs[T]) => {
     const apiMethod = getApiMethod(name)
 
     if (apiMethod) {
