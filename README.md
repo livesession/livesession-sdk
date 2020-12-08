@@ -99,7 +99,7 @@ If you initialized script, you can simply customize it with following functions:
 | off               | -                            | null              | -                                |
 | optOut            | -                            | false             | -                                |
 | debug             | -                            | false             | -                                |
-| track             | eventName, properties        | null, null        | string(required), object         |
+| track             | event, properties            | null, null        | string(required), object         |
 
 If out want to learn more about all methods, go to our [developers page](https://developers.livesession.io/javascript-api/methods/)
 
