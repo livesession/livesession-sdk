@@ -36,7 +36,7 @@ let opts = {
 
 const isLoaded = () => window.__ls;
 
-function getApiMethod(name: string) {
+const getApiMethod = (name: string) => {
   if (!isLoaded()) {
     throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
   }
