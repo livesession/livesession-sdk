@@ -37,6 +37,17 @@ ls.init(
 ls.newPageView();
 ```
 
+**Custom events**
+
+```javascript
+ls("track", "User Subscribed", {
+  plan: "premium",
+  seats: 1,
+  total: 255.50,
+  isPatron: true
+});
+```
+
 ## React usage
 
 ```javascript
