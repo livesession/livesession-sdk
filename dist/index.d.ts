@@ -16,5 +16,6 @@ declare const _default: {
     off: (args?: null | undefined) => any;
     optOut: (args?: null | undefined) => any;
     debug: (args?: null | undefined) => any;
+    track: (eventName: string, properties?: object | undefined) => void;
 };
 export default _default;
