@@ -40,7 +40,7 @@ ls.newPageView();
 **Custom events**
 
 ```javascript
-ls("track", "User Subscribed", {
+ls.track("User Subscribed", {
   plan: "premium",
   seats: 1,
   total: 255.50,
