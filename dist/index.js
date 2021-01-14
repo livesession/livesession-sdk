@@ -4,10 +4,11 @@ const snippet_1 = require("./snippet");
 const api_1 = require("./api");
 const sdkOptionsDefaults = {
     devMode: false,
+    scriptURL: snippet_1.defaultScriptURL
 };
 let opts = Object.assign({}, sdkOptionsDefaults);
 const isLoaded = () => window.__ls;
-function getApiMethod(name) {
+const getApiMethod = (name) => {
     if (!isLoaded()) {
         throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
     }
@@ -21,7 +22,7 @@ function getApiMethod(name) {
         return () => msg;
     }
     return objectAPI[name];
-}
+};
 const safeCall = (name) => {
     return (args) => {
         const apiMethod = getApiMethod(name);
@@ -47,7 +48,7 @@ const _init = (trackID, options, sdkOptions = sdkOptionsDefaults) => {
     if (!trackID) {
         throw new Error(`trackID is required`);
     }
-    snippet_1.default();
+    snippet_1.default(window, document, "script", sdkOptions.scriptURL);
     return api_1.default.init(trackID, options);
 };
 exports.default = {

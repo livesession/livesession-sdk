@@ -6,6 +6,7 @@ declare global {
 declare const _default: {
     init: (trackID: string, options?: object | null | undefined, sdkOptions?: {
         devMode: boolean;
+        scriptURL: string;
     }) => void;
     getSessionURL: (args?: void | undefined) => any;
     identify: (args?: object | undefined) => any;
