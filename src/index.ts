@@ -1,4 +1,4 @@
-import snippet from "./snippet";
+import snippet, {defaultScriptURL} from "./snippet";
 import api from "./api";
 import { apiConfig } from "./api";
 
@@ -28,6 +28,7 @@ type Names = Omit< Omit<apiConfig, "init">, "track">;
 
 const sdkOptionsDefaults = {
   devMode: false,
+  scriptURL: defaultScriptURL
 };
 
 let opts = {
@@ -88,7 +89,8 @@ const _init = (trackID: string, options?: object | null, sdkOptions = sdkOptions
   if (!trackID) {
     throw new Error(`trackID is required`);
   }
-  snippet();
+  snippet(window, document, "script", sdkOptions.scriptURL);
+
   return api.init(trackID, options);
 };
 

@@ -87,6 +87,7 @@ As a third argument to init method you can pass sdkOptions object, here are all 
 | Variable | Parameter | Default | Info                                              |
 | -------- | --------- | ------- | ------------------------------------------------- |
 | devMode  | bool      | false   | Log methods into console instead of calling their |
+| scriptURL  | string      | https://cdn.livesession.io/track.js   | Link to LiveSession tracking code, useful if you want to use a specific version of code|
 
 **Example**
 

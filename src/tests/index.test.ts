@@ -55,7 +55,7 @@ describe("Adding script", () => {
 
 describe("devMode", () => {
   it("should log called method in console", () => {
-    ls.init("TRACK_ID", null, { devMode: true });
+    ls.init("TRACK_ID", null, { devMode: true, scriptURL: "" });
     // @ts-ignore: Unreachable code error
     const returnValues = methods.map((method) => ls[method]());
     expect(returnValues.map((val) => val)).toEqual(

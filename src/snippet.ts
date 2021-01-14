@@ -1,10 +1,12 @@
 import { SDK_VERSION } from "./api";
 
+export const defaultScriptURL = "https://cdn.livesession.io/track.js"
+
 const snippet = (
   wnd = window,
   doc = document,
   type = "script",
-  cdn = ("https:" === window.location.protocol ? "https://" : "http://") + "cdn.livesession.io/track.js"
+  scriptURL = defaultScriptURL,
 ) => {
   return ((w, d, t, u) => {
     if (w.__ls) {
@@ -24,7 +26,7 @@ const snippet = (
     ls.crossOrigin = "anonymous";
     const h = d.getElementsByTagName("head")[0];
     h.appendChild(ls);
-  })(wnd, doc, type, cdn);
+  })(wnd, doc, type, scriptURL);
 };
 
 export default snippet;

@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const api_1 = require("./api");
-const snippet = (wnd = window, doc = document, type = "script", cdn = ("https:" === window.location.protocol ? "https://" : "http://") + "cdn.livesession.io/track.js") => {
+exports.defaultScriptURL = "https://cdn.livesession.io/track.js";
+const snippet = (wnd = window, doc = document, type = "script", scriptURL = exports.defaultScriptURL) => {
     return ((w, d, t, u) => {
         if (w.__ls) {
             throw new Error("LiveSession script already added");
@@ -20,6 +21,6 @@ const snippet = (wnd = window, doc = document, type = "script", cdn = ("https:" 
         ls.crossOrigin = "anonymous";
         const h = d.getElementsByTagName("head")[0];
         h.appendChild(ls);
-    })(wnd, doc, type, cdn);
+    })(wnd, doc, type, scriptURL);
 };
 exports.default = snippet;
