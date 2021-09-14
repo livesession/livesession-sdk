@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SDK_VERSION = void 0;
 const apiCall = (name, ...args) => {
     return window.__ls(name, ...args);
 };
@@ -14,7 +15,8 @@ const api = {
     off: () => apiCall("off"),
     optOut: () => apiCall("optOut", true),
     debug: () => apiCall("debug", true),
-    track: (eventName, properties) => apiCall("track", eventName, properties)
+    track: (eventName, properties) => apiCall("track", eventName, properties),
+    log: (args) => apiCall("log", args)
 };
 exports.SDK_VERSION = "1.1.0";
 exports.default = api;

@@ -1,4 +1,4 @@
-import snippet, {defaultScriptURL} from "./snippet";
+import snippet, { defaultScriptURL } from "./snippet";
 import api from "./api";
 import { apiConfig } from "./api";
 
@@ -18,17 +18,18 @@ interface safeCallArgs {
   off: null;
   optOut: null;
   debug: null;
+  log: null;
 }
 
 interface safeCallArgsManyArgs {
-  track: string
+  track: string;
 }
 
-type Names = Omit< Omit<apiConfig, "init">, "track">;
+type Names = Omit<Omit<apiConfig, "init">, "track">;
 
 const sdkOptionsDefaults = {
   devMode: false,
-  scriptURL: defaultScriptURL
+  scriptURL: defaultScriptURL,
 };
 
 let opts = {
@@ -42,7 +43,7 @@ const getApiMethod = (name: string) => {
     throw new Error("LiveSession is not loaded. Call init() before calling other API functions");
   }
 
-  const objectAPI = <Object>api
+  const objectAPI = <Object>api;
 
   if (!objectAPI.hasOwnProperty(name)) {
     throw new Error(`method "${name}" doesn't exist`);
@@ -51,15 +52,15 @@ const getApiMethod = (name: string) => {
   if (opts.devMode) {
     const msg = `Skipping method: ${name}, devMode enabled`;
     console.warn(msg);
-    return () => msg
+    return () => msg;
   }
 
-  return (objectAPI as any)[name]
-}
+  return (objectAPI as any)[name];
+};
 
 const safeCall = <T extends keyof Names>(name: T) => {
   return (args?: safeCallArgs[T]) => {
-    const apiMethod = getApiMethod(name)
+    const apiMethod = getApiMethod(name);
 
     if (apiMethod) {
       return apiMethod(args);
@@ -69,7 +70,7 @@ const safeCall = <T extends keyof Names>(name: T) => {
 
 const safeCallManyArgs = <T extends keyof safeCallArgsManyArgs>(name: T) => {
   return (...args: any[]) => {
-    const apiMethod = getApiMethod(name)
+    const apiMethod = getApiMethod(name);
 
     if (apiMethod) {
       return apiMethod(...args);
@@ -105,7 +106,8 @@ export default {
   off: safeCall("off"),
   optOut: safeCall("optOut"),
   debug: safeCall("debug"),
-  track: function(eventName: string, properties?: object) {
-    safeCallManyArgs("track")(eventName, properties)
+  track: function (eventName: string, properties?: object) {
+    safeCallManyArgs("track")(eventName, properties);
   },
+  log: safeCall("log"),
 };

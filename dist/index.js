@@ -4,7 +4,7 @@ const snippet_1 = require("./snippet");
 const api_1 = require("./api");
 const sdkOptionsDefaults = {
     devMode: false,
-    scriptURL: snippet_1.defaultScriptURL
+    scriptURL: snippet_1.defaultScriptURL,
 };
 let opts = Object.assign({}, sdkOptionsDefaults);
 const isLoaded = () => window.__ls;
@@ -65,4 +65,5 @@ exports.default = {
     track: function (eventName, properties) {
         safeCallManyArgs("track")(eventName, properties);
     },
+    log: safeCall("log"),
 };
