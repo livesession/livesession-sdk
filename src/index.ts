@@ -23,6 +23,7 @@ interface safeCallArgs {
 
 interface safeCallArgsManyArgs {
   track: string;
+  log: string;
 }
 
 type Names = Omit<Omit<apiConfig, "init">, "track">;
@@ -109,5 +110,7 @@ export default {
   track: function (eventName: string, properties?: object) {
     safeCallManyArgs("track")(eventName, properties);
   },
-  log: safeCall("log"),
+  log: function (logLevel: string, ...args: any) {
+    safeCallManyArgs("log")(logLevel, ...args);
+  },
 };

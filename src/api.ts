@@ -16,7 +16,7 @@ export interface apiConfig {
   optOut: () => void;
   debug: () => void;
   track: (eventName: string, properties?: object) => void;
-  log: (logLevel: ConsoleLogLevel, args: any) => void;
+  log: (logLevel: ConsoleLogLevel, ...rest: any) => void;
 }
 
 const api: apiConfig = {
@@ -31,7 +31,7 @@ const api: apiConfig = {
   optOut: () => apiCall("optOut", true),
   debug: () => apiCall("debug", true),
   track: (eventName: string, properties?: object) => apiCall("track", eventName, properties),
-  log: (logLevel: ConsoleLogLevel, args: any) => apiCall("log", logLevel, args),
+  log: (logLevel: ConsoleLogLevel, ...rest: any) => apiCall("log", logLevel, rest),
 };
 
 export const SDK_VERSION = "1.1.0";
