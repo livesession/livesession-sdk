@@ -1,6 +1,6 @@
 import { SDK_VERSION } from "./api";
 
-export const defaultScriptURL = "https://cdn.livesession.io/track.js"
+export const defaultScriptURL = "https://cdn.labs.livesession.io/track.js"
 
 const snippet = (
   wnd = window,

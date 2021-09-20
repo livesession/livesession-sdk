@@ -18,6 +18,6 @@ declare const _default: {
     optOut: (args?: null | undefined) => any;
     debug: (args?: null | undefined) => any;
     track: (eventName: string, properties?: object | undefined) => void;
-    log: (args?: null | undefined) => any;
+    log: (logLevel: string, ...args: any) => void;
 };
 export default _default;

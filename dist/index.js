@@ -65,5 +65,7 @@ exports.default = {
     track: function (eventName, properties) {
         safeCallManyArgs("track")(eventName, properties);
     },
-    log: safeCall("log"),
+    log: function (logLevel, ...args) {
+        safeCallManyArgs("log")(logLevel, ...args);
+    },
 };
