@@ -99,19 +99,20 @@ ls.init("exampleID", null, { devMode: true });
 
 If you initialized script, you can simply customize it with following functions:
 
-| Function          | Parameter                    | Default           | Allowed                          |
-| ----------------- | ---------------------------- | ----------------- | -------------------------------- |
-| init              | trackID, options, sdkOptions | null, null, false | string(required), object, object |
-| getSessionURL     | callback(url, isNewSession)  | null              | void(string, bool)               |
-| identify          | data                         | null              | object                           |
-| invalidateSession | -                            | null              | -                                |
-| newPageView       | options                      | null              | object                           |
-| setOptions        | options                      | null              | object                           |
-| setCustomParams   | data                         | null              | object                           |
-| off               | -                            | null              | -                                |
-| optOut            | -                            | false             | -                                |
-| debug             | -                            | false             | -                                |
-| track             | event, properties            | null, null        | string(required), object         |
+| Function          | Parameter                    | Default           | Allowed                                        |
+| ----------------- | ---------------------------- | ----------------- | -----------------------------------------------|
+| init              | trackID, options, sdkOptions | null, null, false | string(required), object, object               |
+| getSessionURL     | callback(url, isNewSession)  | null              | void(string, bool)                             |
+| identify          | data                         | null              | object                                         |
+| invalidateSession | -                            | null              | -                                              |
+| newPageView       | options                      | null              | object                                         |
+| setOptions        | options                      | null              | object                                         |
+| setCustomParams   | data                         | null              | object                                         |
+| off               | -                            | null              | -                                              |
+| optOut            | -                            | false             | -                                              |
+| debug             | -                            | false             | -                                              |
+| track             | event, properties            | null, null        | string(required), object                       |
+| log               | logLevel, data               | "log", null       | string("log", "info", "warn", "error"), object |
 
 If out want to learn more about all methods, go to our [developers page](https://developers.livesession.io/javascript-api/methods/)
 
