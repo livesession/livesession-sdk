@@ -116,6 +116,19 @@ If you initialized script, you can simply customize it with following functions:
 
 If out want to learn more about all methods, go to our [developers page](https://developers.livesession.io/javascript-api/methods/)
 
+## Types
+
+### logLevel
+
+| Level    | Description                                                                        |
+| -------- |----------------------------------------------------------------------------------- |
+| "log"    |  Object will be logged as log                                                      |
+| "info"   |  Object will be logged as info                                                     |
+| "warn"   |  Object will be logged as warn                                                     |
+| "error"  |  Object will be logged as error                                                    |
+
+
+
 ## Contributing
 
 We're always open to work with our community. Let us know if you have ideas for new features or suggestions. Pull requests for bug fixes are also welcome!
