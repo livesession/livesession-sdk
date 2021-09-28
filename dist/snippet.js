@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.defaultScriptURL = void 0;
 const api_1 = require("./api");
-exports.defaultScriptURL = "https://cdn.labs.livesession.io/track.js";
+exports.defaultScriptURL = "https://cdn.livesession.io/track.js";
 const snippet = (wnd = window, doc = document, type = "script", scriptURL = exports.defaultScriptURL) => {
     return ((w, d, t, u) => {
         if (w.__ls) {
