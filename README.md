@@ -118,7 +118,7 @@ If out want to learn more about all methods, go to our [developers page](https:/
 
 ## Types
 
-### logLevel
+### logLevel supported
 
 | Level    | Description                                                                        |
 | -------- |----------------------------------------------------------------------------------- |
