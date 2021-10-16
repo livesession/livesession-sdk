@@ -1,3 +1,5 @@
+import { ConsoleLogLevel } from "./api.types";
+
 const apiCall = (name: string, ...args: any) => {
   return window.__ls(name, ...args);
 };
@@ -14,6 +16,7 @@ export interface apiConfig {
   optOut: () => void;
   debug: () => void;
   track: (eventName: string, properties?: object) => void;
+  log: (logLevel: ConsoleLogLevel, ...rest: any) => void;
 }
 
 const api: apiConfig = {
@@ -27,7 +30,8 @@ const api: apiConfig = {
   off: () => apiCall("off"),
   optOut: () => apiCall("optOut", true),
   debug: () => apiCall("debug", true),
-  track: (eventName: string, properties?: object) => apiCall("track", eventName, properties)
+  track: (eventName: string, properties?: object) => apiCall("track", eventName, properties),
+  log: (logLevel: ConsoleLogLevel, ...rest: any) => apiCall("log", logLevel, rest),
 };
 
 export const SDK_VERSION = "1.1.0";

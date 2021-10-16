@@ -1,3 +1,4 @@
+import { ConsoleLogLevel } from "./api.types";
 export interface apiConfig {
     init: (trackID: string, options?: object | null) => void;
     getSessionURL: (callback?: void) => void;
@@ -10,6 +11,7 @@ export interface apiConfig {
     optOut: () => void;
     debug: () => void;
     track: (eventName: string, properties?: object) => void;
+    log: (logLevel: ConsoleLogLevel, ...rest: any) => void;
 }
 declare const api: apiConfig;
 export declare const SDK_VERSION = "1.1.0";

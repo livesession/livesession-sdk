@@ -99,21 +99,35 @@ ls.init("exampleID", null, { devMode: true });
 
 If you initialized script, you can simply customize it with following functions:
 
-| Function          | Parameter                    | Default           | Allowed                          |
-| ----------------- | ---------------------------- | ----------------- | -------------------------------- |
-| init              | trackID, options, sdkOptions | null, null, false | string(required), object, object |
-| getSessionURL     | callback(url, isNewSession)  | null              | void(string, bool)               |
-| identify          | data                         | null              | object                           |
-| invalidateSession | -                            | null              | -                                |
-| newPageView       | options                      | null              | object                           |
-| setOptions        | options                      | null              | object                           |
-| setCustomParams   | data                         | null              | object                           |
-| off               | -                            | null              | -                                |
-| optOut            | -                            | false             | -                                |
-| debug             | -                            | false             | -                                |
-| track             | event, properties            | null, null        | string(required), object         |
+| Function          | Parameter                    | Default           | Allowed                                        |
+| ----------------- | ---------------------------- | ----------------- | -----------------------------------------------|
+| init              | trackID, options, sdkOptions | null, null, false | string(required), object, object               |
+| getSessionURL     | callback(url, isNewSession)  | null              | void(string, bool)                             |
+| identify          | data                         | null              | object                                         |
+| invalidateSession | -                            | null              | -                                              |
+| newPageView       | options                      | null              | object                                         |
+| setOptions        | options                      | null              | object                                         |
+| setCustomParams   | data                         | null              | object                                         |
+| off               | -                            | null              | -                                              |
+| optOut            | -                            | false             | -                                              |
+| debug             | -                            | false             | -                                              |
+| track             | event, properties            | null, null        | string(required), object                       |
+| log               | logLevel, data               | "log", null       | string("log", "info", "warn", "error"), object |
 
 If out want to learn more about all methods, go to our [developers page](https://developers.livesession.io/javascript-api/methods/)
+
+## Types
+
+### logLevel supported
+
+| Level    | Description                                                                        |
+| -------- |----------------------------------------------------------------------------------- |
+| "log"    |  Object will be logged as log                                                      |
+| "info"   |  Object will be logged as info                                                     |
+| "warn"   |  Object will be logged as warn                                                     |
+| "error"  |  Object will be logged as error                                                    |
+
+
 
 ## Contributing
 
@@ -121,7 +135,7 @@ We're always open to work with our community. Let us know if you have ideas for 
 
 ## Changelog
 
-This package currently support `v.1.2` of API, you can find more informations about API changelog [here](https://developers.livesession.io/getting-started/changelog/)
+This package currently support `v.1.4.0` of API, you can find more informations about API changelog [here](https://developers.livesession.io/getting-started/changelog/)
 
 ## License
 
