@@ -135,7 +135,7 @@ We're always open to work with our community. Let us know if you have ideas for 
 
 ## Changelog
 
-This package currently support `v.1.2` of API, you can find more informations about API changelog [here](https://developers.livesession.io/getting-started/changelog/)
+This package currently support `v.1.4.0` of API, you can find more informations about API changelog [here](https://developers.livesession.io/getting-started/changelog/)
 
 ## License
 
